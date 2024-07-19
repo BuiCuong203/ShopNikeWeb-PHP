@@ -1,0 +1,68 @@
+/* login */
+#login_body{
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+.btn-login{
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+/* login */
+
+#navbar {
+  background-color: #1c1c50;
+  font-size: 16px;
+}
+#navbar li a {
+  color: #fff;
+}
+.has-error {
+  color: #f00;
+}
+
+/* pagination */
+.pg a{
+  color: #1c1c50;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 8px 15px;
+}
+.pg a.active {
+  text-decoration: none;
+  background-color: #1c1c50;
+  color: #fff;
+  border-radius: 5px;
+}
+.pg a:hover:not(.active) {
+  text-decoration: none;
+  background-color: #a8a8a8;
+  color: #fff;
+  border-radius: 5px;
+}
+/* pagination */
+
+.Processing, .Confirmed, .Delivering, .Finished, .Canceled {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 5px;
+}
+.Processing{
+  background-color: #6c757d;
+  color: #fff;
+}
+.Confirmed{
+  background-color: #ffc107;
+}
+.Delivering{
+  background-color: #007bff;
+  color: #fff;
+}
+.Finished{
+  background-color: #28a745;
+  color: #fff;
+}
+.Canceled{
+  background-color: #dc3545;
+  color: #fff;
+}
