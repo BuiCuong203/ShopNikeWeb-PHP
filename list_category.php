@@ -99,7 +99,7 @@
                             <tr data-category_id="<?php echo $row['category_id'];?>">
                                 <td><?php echo $STT++; ?></td>
                                 <td id="data-name"><?php echo $row['name']; ?></td>
-                                <td><a href="#" class="btn btn-warning update" data-toggle="modal" data-target="#SuaDM" data-category_id="<?php echo $row['category_id'];?>" data-name="<?php echo $row['name']; ?>">Sửa</a></td>
+                                <td><a href="#" class="btn btn-warning update" data-toggle="modal" data-target="#SuaDM" data-category_id="<?php echo $row['category_id'];?>">Sửa</a></td>
                             </tr>
                         <?php } ?>
                 </tbody>
