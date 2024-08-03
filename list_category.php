@@ -20,12 +20,20 @@
     // ThemDM
 
     // SuaDM
-    if(isset($_POST['suadm'])){
+    if(isset($_POST['category_id']) && isset($_POST['name'])){
         $category_id = $_POST['category_id'];
         $name = $_POST['name'];
         $sql2 = "Update category set name = '$name' where category_id = '$category_id'";
         $result2 = mysqli_query($conn, $sql2);
-        header('location: list_category.php');
+        exit;
+    }
+    if(isset($_POST['id'])){
+        $category_id = $_POST['id'];
+        $sql3 = "Select * from category where category_id = $category_id";
+        $result3 = mysqli_query($conn, $sql3);
+        $row3 = mysqli_fetch_assoc($result3);
+        echo json_encode($row3);
+        exit;
     }
     // SuaDM
 ?>
@@ -88,10 +96,10 @@
                     <?php
                         $STT = 1;
                         while ($row = mysqli_fetch_assoc($result)) {?>
-                            <tr>
+                            <tr data-category_id="<?php echo $row['category_id'];?>">
                                 <td><?php echo $STT++; ?></td>
-                                <td><?php echo $row['name']; ?></td>
-                                <td><a href="#" class="btn btn-warning update" data-toggle="modal" data-target="#SuaDM" data-category_id="<?php echo $row['category_id']; ?>" data-name="<?php echo $row['name']; ?>">Sửa</a></td>
+                                <td id="data-name"><?php echo $row['name']; ?></td>
+                                <td><a href="#" class="btn btn-warning update" data-toggle="modal" data-target="#SuaDM" data-category_id="<?php echo $row['category_id'];?>" data-name="<?php echo $row['name']; ?>">Sửa</a></td>
                             </tr>
                         <?php } ?>
                 </tbody>
@@ -108,7 +116,7 @@
                         </div>
                         <!-- Modal Body -->
                         <div class="modal-body">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="" method="post" enctype="multipart/form-data" id="updateCategory">
                                 <div class="form-group d-none">
                                     <label for="">Id</label>
                                     <input type="number" name="category_id" class="form-control" id="category_id">
@@ -131,12 +139,34 @@
 
     <script>
         $(document).ready(function(){
-            $('.update').on("click", function(){
+            $('.update').click(function(){
                 var category_id = $(this).data('category_id')
-                var name = $(this).data('name');
                 
-                $('#category_id').val(category_id);
-                $('#name').val(name);
+                $.ajax({
+                    url: '',
+                    type: 'POST',
+                    data: {id: category_id},
+                    success: function(response){
+                        var row = jQuery.parseJSON(response);
+                        $('#category_id').val(category_id);
+                        $("#name").val(row['name']);
+                    }
+                });
+            });
+            $('#updateCategory').submit(function(event){
+                event.preventDefault();
+				var category_id = $('#category_id').val();
+				var name = $('#name').val();
+
+                $.ajax({
+		        	url: '',
+		        	type: 'POST',
+		        	data: {category_id: category_id, name: name},
+		        	success: function(response){
+		        		$('#SuaDM').modal('hide');
+		        		$('tr[data-category_id="' + category_id + '"]').find('#data-name').html(name);
+		        	}
+		        });
             });
         });
     </script>
