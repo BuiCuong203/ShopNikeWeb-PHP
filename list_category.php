@@ -157,7 +157,7 @@
 					success: function(response){
 						$('#ThemDM').modal('hide');
 						$('#name1').val('');
-						var newrow = "<tr data-category_id='"+response+"'><td id='stt'>"+stt+"</td><td id='data-name'>"+name+"</td><td><a class='btn btn-warning update' data-toggle='modal' data-target='#SuaDM' data-category_id='"+response+"'>Sửa</a></td></tr>";
+						var newrow = "<tr data-category_id='"+response+"'><td>"+stt+"</td><td id='data-name'>"+name+"</td><td><a class='btn btn-warning update' data-toggle='modal' data-target='#SuaDM' data-category_id='"+response+"'>Sửa</a></td></tr>";
 						$('#data-category').append(newrow);
 
                         $("a.update[data-category_id='"+response+"']").click(function() {
