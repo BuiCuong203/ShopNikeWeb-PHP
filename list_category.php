@@ -11,11 +11,16 @@
     // LoadDM
 
     // ThemDM
-    if(isset($_POST['themdm'])) {
-        $name = $_POST['name'];
+    if(isset($_POST['name1'])) {
+        $name = $_POST['name1'];
         $sql1 = "Insert into category(name) values('$name')";
         $result1 = mysqli_query($conn, $sql1);
-        header('location: list_category.php');
+
+        $x = "Select max(category_id) from category";
+        $x1 = mysqli_query($conn, $x);
+        $x1 = mysqli_fetch_assoc($x1);
+        echo $x1['max(category_id)'];
+        exit;
     }
     // ThemDM
 
@@ -70,10 +75,10 @@
                         </div>
                         <!-- Modal Body -->
                         <div class="modal-body">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form id="addCategory" action="" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="">Tên danh mục</label>
-                                    <input type="text" name="name" class="form-control" required>
+                                    <input type="text" name="name" class="form-control" id="name1" required>
                                 </div>
 
                                 <button name ="themdm" class="btn btn-success" type="submit">Thêm danh mục</button>
@@ -92,10 +97,10 @@
                         <th>Sửa</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="data-category">
                     <?php
                         $STT = 1;
-                        while ($row = mysqli_fetch_assoc($result)) {?>
+                        while ($row = mysqli_fetch_assoc($result)) { ?>
                             <tr data-category_id="<?php echo $row['category_id'];?>">
                                 <td><?php echo $STT++; ?></td>
                                 <td id="data-name"><?php echo $row['name']; ?></td>
@@ -139,8 +144,41 @@
 
     <script>
         $(document).ready(function(){
-            $('.update').click(function(){
-                var category_id = $(this).data('category_id')
+            var stt = <?php echo $STT - 1; ?>;
+            $('#addCategory').submit(function(event){
+				event.preventDefault();
+				var name = $('#name1').val();
+                stt++;
+				
+				$.ajax({
+					url: '',
+					type: 'POST',
+					data: {name1: name},
+					success: function(response){
+						$('#ThemDM').modal('hide');
+						$('#name1').val('');
+						var newrow = "<tr data-category_id='"+response+"'><td id='stt'>"+stt+"</td><td id='data-name'>"+name+"</td><td><a class='btn btn-warning update' data-toggle='modal' data-target='#SuaDM' data-category_id='"+response+"'>Sửa</a></td></tr>";
+						$('#data-category').append(newrow);
+
+                        $("a.update[data-category_id='"+response+"']").click(function() {
+                            var category_id = response;
+
+                            $.ajax({
+                                url: '',
+                                type: 'POST',
+                                data: {id: category_id},
+                                success: function(response){
+                                    var row = jQuery.parseJSON(response);
+                                    $('#category_id').val(category_id);
+                                    $("#name").val(row['name']);
+                                }
+                            });
+                        });
+					}
+				});
+			});
+            $(".update").click(function(){
+                var category_id = $(this).data('category_id');
                 
                 $.ajax({
                     url: '',
