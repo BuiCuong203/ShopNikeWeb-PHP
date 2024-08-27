@@ -29,19 +29,19 @@
     <div id="myCarousel" class="carousel slide" >
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="/img/Banner-01.jpg" alt="hinh anh">
+                <img class="d-block w-100" src="/img/1.png" alt="hinh anh">
                 <div class="carousel-caption"></div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="/img/Banner-02.jpg" alt="hinh anh">
+                <img class="d-block w-100" src="/img/2.png" alt="hinh anh">
                 <div class="carousel-caption"></div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="/img/banner-03.jpg" alt="hinh anh">
+                <img class="d-block w-100" src="/img/3.png" alt="hinh anh">
                 <div class="carousel-caption"></div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="/img/Banner-04.png" alt="hinh anh">
+                <img class="d-block w-100" src="/img/4.png" alt="hinh anh">
                 <div class="carousel-caption"></div>
             </div>
         </div>
