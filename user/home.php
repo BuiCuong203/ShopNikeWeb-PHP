@@ -80,7 +80,7 @@
                                         <h5><?php echo number_format($row["price"], 0, ".", ","); ?>đ</h5>
                                     <?php }
                                     else { ?>
-                                        <h5><?php echo number_format($row["price"], 0, ".", ","); ?>đ <strike><?php echo number_format($row["price"], 0, ".", ","); ?>đ</strike></h5>
+                                        <h5><?php echo number_format($row["discount"], 0, ".", ","); ?>đ <strike><?php echo number_format($row["price"], 0, ".", ","); ?>đ</strike></h5>
                                     <?php } ?>
                                 <a href="product_detail.php?product_id=<?php echo $row["product_id"]; ?>" class="btn">Xem chi tiết</a>
                             </div>
