@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image" href="/img/logo.png">
     <title>ShopNike</title>
     <link rel="stylesheet" href="/css/style_admin.css">
-    <link rel="stylesheet" href="/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link rel="stylesheet" href="/fontawesome-free-6.6.0-web/css/all.min.css">
     <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
